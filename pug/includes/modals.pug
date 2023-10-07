@@ -1,0 +1,83 @@
+//- #modal-file.dc-modal
+//-   .dc-heading-large Оставьте заявку
+//-   form(action="sendmail.php" method="post" enctype="multipart/form-data")
+//-     .dc-input
+//-       input(type='hidden', name='MAX_FILE_SIZE', value='26214400')
+//-       input(id="choose" type="file" class="dc-input__file" name="file")
+//-       label.dc-input__label-file(for="choose") + Прикрепить файл
+//-       .dc-input__limit-file Размер файла не должен превышать 25 мб
+//-     button.dc-btn.dc-btn_primary(type="submit" class="send") ОТПРАВИТЬ
+//-     .agree-wrap
+//-       .checked
+//-         span.check-btn
+//-         span Принимаю <a class="js-stop" href="#privacy" data-fancybox>Положение и Согласие</a> на обработку <br>персональных данных
+//-       .lock
+//-         i.icon-lock
+//-         span Ваши данные защищены
+
+
+//- #call.dc-modal
+//-   form(action="sendmail.php" method="post")
+//-     input(type="hidden" name="formname" data-jsval value="")
+//-     .dc-input.dc-input_label
+//-       input(type='text', placeholder='', name='name' onkeyup="this.setAttribute('value', this.value);" value)
+//-       .dc-input__label Введите Ваше имя
+//-     .dc-input.dc-input_label
+//-       input(type="tel" placeholder="" name="phone" data-req="1" onkeyup="this.setAttribute('value', this.value);" value)
+//-       .dc-input__label Введите Ваш телефон
+//-     .dc-input.dc-input_label
+//-       input(type="email" placeholder="" name="email" onkeyup="this.setAttribute('value', this.value);" value)
+//-       .dc-input__label Введите Ваш E-mail
+//-     button.dc-btn.dc-btn_primary(type="submit" class="send") Отправить
+//- #call2.dc-modal
+//-   form(action="sendmail.php" method="post")
+//-     input(type="hidden" name="formname" data-jsval value="")
+//-     .dc-input
+//-       input(type='text', placeholder='Введите Ваше имя', name='name')
+//-     .dc-input
+//-       input(type="tel" placeholder="Введите Ваш телефон" name="phone" data-req="1")
+//-     .dc-input
+//-       input(type="email" placeholder="E-mail" name="email")
+//-     button.dc-btn.dc-btn_primary(type="submit" class="send") Отправить
+
+//- #thx.dc-modal
+//-   h2 Спасибо за заявку
+
+//- #privacy.dc-modal
+//-   h2 Политика конфиденциальности
+//-   p.
+//-     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quod, aut eligendi consequatur iste, eveniet dolorem aperiam cupiditate ad optio fuga neque omnis hic totamvoluptatem repellat deleniti, voluptas dignissimos.
+
+
+//- ===============================================================================================
+
+//- you-tube: Mikhail Zhitin modal ========================================================
+
+.modal__wrapper
+  .modal
+    .modal__close
+      img(src='img/home/close-btn.svg' alt='cancel' width='16px' height='16px')
+    .modal__title
+      h3 Contact <span>Me!</span>
+    .modal__body.form_modal.form
+      form(action="#")
+        .form__box
+          .form__field
+            input(type="text" placeholder="Name:" required)
+            span.focus
+          .form__field
+            input(type="email" placeholder="Email:" required)
+            span.focus
+        .form__box
+          .form__field
+            input(type="number" placeholder="Mobile number:" required)
+            span.focus
+          .form__field
+            input(type="email" placeholder="Email subject:" required)
+            span.focus
+        .form__textarea
+          textarea(name="text", cols="30", rows="10" placeholder="Your message" required)
+          span.focus
+        .form__button
+          button.form__btn.dc-btn.dc-btn_primary(type="submit") Submit
+

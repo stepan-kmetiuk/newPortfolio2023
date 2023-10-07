@@ -1,0 +1,430 @@
+/* _____ Basic elements _____ */
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+
+
+/* base */
+
+// .container {
+//   max-width: 460px;
+
+//   padding-right: 20px;
+//   padding-left: 20px;
+//   margin-right: auto;
+//   margin-left: auto;
+
+//   position: relative;
+//   @include breakpoint('phablet') {
+//     padding-left: 15px;
+//     padding-right: 15px;
+
+//     max-width: $container_sm;
+//   }
+//   @include breakpoint('small') {
+//     max-width: $container_md;
+//   }
+//   @include breakpoint('medium') {
+//     max-width: $container_lg;
+//   }
+//   @include breakpoint('large') {
+//     max-width: $container_xl;
+//   }
+// }
+
+.main-wrap {
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.wrapper {
+  // position: relative;
+  flex: 1;
+}
+
+body {
+  background-color: #081b29;
+  position: relative;
+  font-family: $font1;
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 1.2;
+
+  scroll-behavior: smooth;
+
+
+  text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include media-breakpoint-down(sm) {
+
+    &.lock {
+      overflow: hidden;
+    }
+  }
+
+  &.locked {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+
+::selection {
+  background-color: var(--main-color);
+  color: white;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+//============================================================================================
+p+p {
+  margin-top: 10px;
+}
+
+// .header+* {
+//   padding-top: 100px;
+// }
+
+// second container
+[class*="__container"] {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+// Стилі для чуйних картинок (IBG)
+// Сніппет (HTML): ibg (div з картинкою та класами)
+// Сніппет (HTML): ibga (a з картинкою та класами)
+
+[class*="-ibg"] {
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+}
+
+//
+[class*="-ibg_contain"] {
+  img {
+    object-fit: contain;
+  }
+}
+
+// Шаблони (заготівлі)
+// @extend %ім'я шаблону;
+// Сніппет (SCSS): ex
+
+%flexBtw {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+%flexJstf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+%flexRowCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+%bgImg {
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+
+// Лічильник для списку
+%listCounter {
+  list-style-type: none;
+  counter-reset: item;
+
+  li {
+    position: relative;
+
+    &:before {
+      counter-increment: item;
+      content: counter(item);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+// Адаптивне відео
+%responsiveVideo {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 56.25%;
+
+  video,
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Відео як фон
+%videoBackground {
+
+  video,
+  iframe,
+  object,
+  embed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+  }
+}
+
+// Сірий фільтр
+%grayfilter {
+  transition: all 0.3s ease 0s;
+  filter: grayscale(1);
+
+  @media (any-hover: hover) {
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+}
+
+// Скасувати виділення
+%noselect {
+  user-select: none;
+}
+
+// Дзеркальне відображення
+%mirror {
+  transform: scale(-1, 1);
+}
+
+// Плавний скролл
+%smoothscroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+// Сховати скролл
+%hidescroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+//============================================================================================
+
+// start
+
+.container {
+  position: relative;
+}
+
+.dc-img-block {
+  img {
+    display: block;
+  }
+}
+
+//============================================================================================================
+
+//для блоків без обмежюючого контейнера
+// padding-right: calc((100% - 1440px) / 2);
+
+// @include fz(100px, 90px, null, null, 30px, 'padding');
+// @include fz(100px, lg, md, sm, xs, 'font-size');
+
+// @include media-breakpoint-down(md) {
+//   font-size: responsive(md, 100px);
+// }
+
+//- select.wpm-select(name="sel" data-wpm-placeholder="qwer2")
+//-   option(data-wpm-id="ua" value="Lorem 1") Lorem 1
+//-   option(data-wpm-id="us" value="Lorem 2") Lorem 2
+
+//================================================================================
+/*Медіа запит працює в діапазоні між вказаним значенням */
+// @media only screen and (max-width: 600px) and (min-width: 400px)  {...}
+//================================================================================
+
+// top: per(682, 987); процентне позиціонування по вертикалі 1-й аргумент відступ з верху,2-й висота блоку
+// left: per(15, 1620); процентне позиціонування по горизонталі 1-й аргумент відступ з верху,2-й ширина блоку
+
+// background: var(--main-color);
+
+// =================================================================================
+// data-da=".block,768,0" приклад:
+// для *ДИНАМІЧНИЙ АДАПТИВ*
+// =================================================================================
+
+// =================================================================================
+// для *Paralax-Eftcts*
+// data-prlx-parent додати до батьківського елементу
+// data-prlx додати до дочірнього, якій анімується
+// data-direction="1" напрямок
+// data-coefficient="50" коф.
+// =================================================================================
+
+// =================================================================================
+//  PARALAX-Mouse:
+//  data-prlx-mouse додати на об'єкт якій хочемо анімувати
+//  data-prlx-cx="100" -- вісь: Х;
+//  data-prlx-cy="100" -- вісь: Х;
+//  data-prlx-a="50" -- швидкість
+//  data-prlx-dxr="50" --рух у протилежному напрямку посі Х;
+//  data-prlx-dxy="50"	--рух у протилежному напрямку посі Y;
+// =================================================================================
+
+// =================================================================================
+// data-popup="#popup" приклад:
+// для *POPUP*
+// data-popup="#video" для відео
+// =================================================================================
+
+// hovr-efect---------------
+// li {
+// 	a {
+// 		position: relative;
+
+// 		&:before {
+// 			content: '';
+// 			position: absolute;
+// 			width: 100%;
+// 			height: rem(2);
+// 			top: calc(100%);
+// 			background: #fff;
+// 			transform: scale(0);
+// 			transition: .3s;
+// 			border-radius: .5rem;
+// 		}
+
+// 		&:hover::before {
+// 			transform: scale(1);
+// 		}
+
+// 		@media (any-hover: hover) {
+// 			&:hover {
+// 				color: $purpleColor;
+// 			}
+// 		}
+// 	}
+// }
+// hovr-efect---------------
+
+
+
+// ul[class],
+// ol[class] {
+//   padding: 0;
+// }
+
+// .visually-hidden {
+//   position: absolute;
+//   opacity: 0;
+//   visibility: hidden;
+//   width: 0;
+//   height: 0;
+//   display: block;
+//   margin-left: -10000px;
+//   background: transparent;
+//   font-size: 0;
+// }
+//============================================================================================================
+
+
+@import "wpm-select/_select.scss";
+@import "wpm-select/_flag-icon.scss";

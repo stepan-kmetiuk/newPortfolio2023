@@ -1,0 +1,27 @@
+mixin image(file)
+  - var dimensions = resize_img("app/"+file);
+  - var w=dimensions.width;
+  - var h=dimensions.height;
+  |
+  |
+  img(src=file,width= w,height= h,alt="")&attributes(attributes)
+
+
+mixin email(email)
+  a(href="mailto:"+email)&attributes(attributes)= email
+
+mixin phone(phone)
+  - var phone_replace = phone.replace(/\D+/g,"");
+  a(href="tel:"+phone_replace)&attributes(attributes)= phone
+
+mixin fancybox(fancybox_link, fancybox_name)
+  a(href="#"+fancybox_link, class="fancybox")&attributes(attributes) !{fancybox_name}
+
+
+mixin form1(form_btn_name, form_btn_val)
+  form(action="sendmail.php" method="post")
+    input(type="text" placeholder="Имя" name="name")
+    input(type="tel" placeholder="Телефон" name="phone" data-req="1")
+    input(type="email" placeholder="E-mail" name="email" data-req="1")
+    input(type="hidden" name="nameform" value=form_btn_val)
+    button(type="submit" class="send button")=form_btn_name

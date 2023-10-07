@@ -1,0 +1,56 @@
+@use 'sass:math';
+
+@import "_vars.scss";
+@import "dc-scss/globals/normalize/normalize.scss";
+@import "dc-scss/globals/bootstrap 4/bootstrap4.scss";
+
+$multiplier_lg: map-get($container-max-widths, lg) / map-get($container-max-widths, xl);
+$multiplier_md: map-get($container-max-widths, md) / map-get($container-max-widths, xl);
+$multiplier_sm: map-get($container-max-widths, sm) / map-get($container-max-widths, xl);
+$multiplier_xs: map-get($container-max-widths, xs) / map-get($container-max-widths, xl);
+
+// $multiplier_lg: $container_lg / $container_xl;
+// $multiplier_md: $container_md / $container_xl;
+// $multiplier_sm: $container_sm / $container_xl;
+// $multiplier_xs: $container_xs / $container_xl;
+
+@function responsive($breakpoint, $val) {
+  @if $breakpoint==lg {
+    @return decimal-round($val * $multiplier_lg);
+  }
+
+  @if $breakpoint==md {
+    @return decimal-round($val * $multiplier_md);
+  }
+
+  @if $breakpoint==sm {
+    @return decimal-round($val * $multiplier_sm);
+  }
+
+  @if $breakpoint==xs {
+    @return decimal-round($val * $multiplier_xs);
+  }
+}
+
+//fonts
+// @import "fonts.scss";
+@import "_icomoon.scss";
+
+
+@import "dc-scss/globals/base/base.scss";
+@import "dc-scss/globals/base/reset.scss";
+@import "dc-scss/components/buttons/buttons.scss";
+@import "_input.scss";
+//@import "dc-scss/components/totop button/totop.scss";
+/*endinject*/
+@import "_common.scss";
+@import "aos.scss";
+@import "_grid-custom.scss";
+
+
+
+@import "_header.scss";
+@import "_home.scss";
+@import "_footer.scss";
+// @import "_modal.scss";
+//@import "_form.scss";

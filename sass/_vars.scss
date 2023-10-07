@@ -1,0 +1,208 @@
+$font1: 'Poppins',
+sans-serif;
+
+// ====================================================
+
+:root {
+	--main-color: #00abf0; // main color
+	--bg-color: #081b29; // bg color
+	--second-bg-color: #112e42; // second bg color
+	--text-color: #ededed; // text color
+}
+
+//=====================================================
+
+$default_color: #d3d3d3;
+$primary_color: #4A4A49;
+$gold: #A67C2E;
+// $primary_color_hover: darken(#4A4A49, 20);
+$primary_color_hover: #A67C2E;
+$secondary_color: #29CFCF;
+// $main_color: #043988;
+
+$bp-xsmall: 576px;
+$sm-bp: 768px;
+$md-bp: 992px;
+$lg-bp: 1230px;
+$lg-bp-x2: 1670px;
+$bp-blarge: "only screen and (max-width : $lg-bp-x2 - 1)";
+
+$container_xs: 480px;
+$container_sm: 540px;
+$container_md: 720px;
+$container_lg: 960px;
+$container_xl: 1190px;
+
+// line-height %
+@function glh($font-size, $line-height) {
+	@return $line-height / $font-size;
+}
+
+// округлює числа
+@function decimal-round($number, $digits: 0, $mode: floor) {
+	$n: 1;
+
+	// $number must be a number
+	@if type-of($number) !=number {
+		@warn '#{ $number } is not a number.';
+		@return $number;
+	}
+
+	// $digits must be a unitless number
+	@if type-of($digits) !=number {
+		@warn '#{ $digits } is not a number.';
+		@return $number;
+	}
+
+	@else if not unitless($digits) {
+		@warn '#{ $digits } has a unit.';
+		@return $number;
+	}
+
+	@if $digits>0 {
+		@for $i from 1 through $digits {
+			$n: $n * 10;
+		}
+	}
+
+	@if $mode==round {
+		@return round($number * $n) / $n;
+	}
+
+	@else if $mode==ceil {
+		@return ceil($number * $n) / $n;
+	}
+
+	@else if $mode==floor {
+		@return floor($number * $n) / $n;
+	}
+
+	@else {
+		@warn '#{ $mode } is undefined keyword.';
+		@return $number;
+	}
+}
+
+// адаптивна властивіть
+@mixin fz($fontsize, $fzlg: lg, $fzmd: md, $fzsm: sm, $fzxs: xs, $prop: 'font-size') {
+	#{$prop}: $fontsize;
+
+	@if $fzlg==lg {
+		@include media-breakpoint-down(lg) {
+			#{$prop}: decimal-round($fontsize / (map-get($container-max-widths, xl)/ map-get($container-max-widths, lg)));
+		}
+	}
+
+	@else if $fzlg !=null {
+		@include media-breakpoint-down(lg) {
+			#{$prop}: $fzlg;
+		}
+	}
+
+	@if $fzmd==md {
+		@include media-breakpoint-down(md) {
+			#{$prop}: decimal-round($fontsize / (map-get($container-max-widths, xl)/ map-get($container-max-widths, md)));
+		}
+	}
+
+	@else if $fzmd !=null {
+		@include media-breakpoint-down(md) {
+			#{$prop}: $fzmd;
+		}
+	}
+
+	@if $fzsm==sm {
+		@include media-breakpoint-down(sm) {
+			#{$prop}: decimal-round($fontsize / (map-get($container-max-widths, xl)/ map-get($container-max-widths, sm)));
+		}
+	}
+
+	@else if $fzsm !=null {
+		@include media-breakpoint-down(sm) {
+			#{$prop}: $fzsm;
+		}
+	}
+
+	@if $fzxs==xs {
+		@include media-breakpoint-down(xs) {
+			#{$prop}: decimal-round($fontsize / (map-get($container-max-widths, xl)/ 335px));
+		}
+	}
+
+	@else if $fzxs !=null {
+		@include media-breakpoint-down(xs) {
+			#{$prop}: $fzxs;
+		}
+	}
+
+}
+
+// вираховує проценти %
+@function per($tar, $full:map-get($container-max-widths, xl) - 30px) {
+	@return percentage($tar / $full)
+}
+
+;
+
+// брейкпоінти
+@mixin breakpoint($point) {
+	@if $point=='min-maxlarge-x2' {
+		@media (min-width: $lg-bp-x2) {
+			@content ;
+		}
+	}
+
+	@else if $point==large {
+		@media (min-width: $lg-bp) {
+			@content ;
+		}
+	}
+
+	@else if $point==medium {
+		@media (min-width: $md-bp) {
+			@content ;
+		}
+	}
+
+	@else if $point==small {
+		@media (min-width: $sm-bp) {
+			@content ;
+		}
+	}
+
+	@else if $point==phablet {
+		@media (min-width: $bp-xsmall) {
+			@content ;
+		}
+	}
+
+	@else if $point=='max2large' {
+		@media (max-width: ($lg-bp-x2 - 0.02)) {
+			@content ;
+		}
+	}
+
+	@else if $point==maxlarge {
+		@media (max-width: ($lg-bp - 0.02)) {
+			@content ;
+		}
+	}
+
+	@else if $point==maxmedium {
+		@media (max-width: ($md-bp - 0.02)) {
+			@content ;
+		}
+	}
+
+	@else if $point==maxsmall {
+		@media (max-width: ($sm-bp - 0.02)) {
+			@content ;
+		}
+	}
+
+	@else if $point==mobileonly {
+		@media (max-width: ($bp-xsmall - 0.02)) {
+			@content ;
+		}
+	}
+}

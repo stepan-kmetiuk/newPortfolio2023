@@ -1,0 +1,77 @@
+@mixin angle-edge($pos-top:null, $angle-top:null, $pos-btm:null, $angle-btm:null){
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    &:before,
+    &:after{
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: inherit;
+        z-index: -1;
+        transition: ease all .5s;
+    }
+
+    @if $pos-top{
+        &:before{
+            @if $pos-top == 'topleft'{
+                top: 0;
+                transform-origin: right top;
+                transform: skewY($angle-top);
+            }
+            @if $pos-top == 'topright' {
+                top: 0;
+                transform-origin: left top;
+                transform: skewY(-$angle-top);
+            } 
+        }
+    }
+
+    @if $pos-btm{
+        &:after{
+            @if $pos-btm == 'bottomleft' {
+                bottom: 0;
+                transform-origin: right bottom;
+                transform: skewY(-$angle-btm);
+            } 
+
+            @if $pos-btm == 'bottomright' {
+                bottom: 0;
+                transform-origin: left bottom;
+                transform: skewY($angle-btm);
+            } 
+        }
+    }
+
+
+}
+
+.angled-top-left{
+    @include angle-edge($pos-top: topleft, $angle-top: 4.5deg);
+}
+
+.angled-top-right{
+    @include angle-edge($pos-top: topright, $angle-top: 4.5deg);
+}
+
+.angled-bottom-left{
+    @include angle-edge($pos-btm: bottomleft, $angle-btm: 4.5deg);
+}
+
+.angled-bottom-right{
+    @include angle-edge($pos-btm: bottomright, $angle-btm: 4.5deg);
+}
+
+.angled-both-left{
+    @include angle-edge(topleft, 4.5deg, bottomleft, 4.5deg);
+}
+.angled-both-right{
+    @include angle-edge(topright, 4.5deg, bottomright, 4.5deg);
+}
+.angled-both-left-right{
+    @include angle-edge(topleft, 4.5deg, bottomright, 4.5deg);
+}
+.angled-both-right-left{
+    @include angle-edge(topright, 4.5deg, bottomleft, 4.5deg);
+}

@@ -1,0 +1,10 @@
+input:not([type=submit]) {
+	width: 100%;
+	outline: none;
+	display: block;
+}
+
+[type=submit] {
+	cursor: pointer;
+}
+

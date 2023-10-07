@@ -1,0 +1,16 @@
+block config
+  - var pageTitle = '111';
+  - var version = '1.0';
+  - var overflow_none = '';
+  - var header = '';
+
+doctype html
+include ../bemto-master/bemto.pug
+include ../includes/mixins.pug
+html(lang="en")
+  head
+    include ../includes/head.pug
+  body
+    .main-wrap(class=overflow_none)
+      block main
+    include ../includes/scripts.pug

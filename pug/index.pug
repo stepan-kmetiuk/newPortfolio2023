@@ -1,0 +1,236 @@
+extends layout/layout
+append config
+  - var pageTitle = 'Home';
+block main
+  include includes/header
+  .wrapper
+    section.home#home
+      .container
+        .home__inner
+          .home__describe
+            h1(data-aos="zoom-in" data-aos-delay="50") Hi, I'm Stepan Kmetiuk
+            .home__animate(data-aos="zoom-in" data-aos-delay="100")
+              h2 Frontend Developer
+            p(data-aos="zoom-in" data-aos-delay="150").
+              Hello, my name is Stepan, and I specialize in converting PSD designs to high-quality HTML websites. I'm passionate about my work, and I enjoy working closely with clients to bring their vision to life.
+            .home__buttons(data-aos="zoom-in" data-aos-delay="150")
+              a.home__btn.dc-btn.dc-btn_primary.home-modal(href="#!") Hire Me
+              a.home__btn.dc-btn.dc-btn_secondary(href="tel:+380633945606") let's Talk
+            .home__social(data-aos="zoom-in" data-aos-delay="200")
+              a(href="https://www.facebook.com" target="_blank")
+                i.icon-facebook
+              a(href="https://twitter.com/home" target="_blank")
+                i.icon-twitter
+              a(href="https://www.instagram.com/angelrokko" target="_blank")
+                i.icon-instagram
+              a(href="https://github.com/stepan-kmetiuk/stepan-kmetiuk" target="_blank")
+                i.icon-github
+          .home__img-ibg
+            img(src="../img/home/portfolio.webp", alt="img-portfolio")
+      include includes/modals.pug
+
+    section.about#about
+      .container
+        .about__inner
+          .about__title(data-aos="fade-down")
+            h3 About <span>me</span>
+          .about__img-ibg
+            img(src="../img/about/angell-wiebp.webp", alt="men-png")
+            span
+          .about__text
+            h3 Frontend Developer!
+            p.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit explicabo maxime cum, sit vero numquam exercitationem voluptates tempora. Assumenda consectetur deserunt eos quam tempora amet ipsum eligendi commodi quidem iste!
+            .about__button
+              a.about__btn.dc-btn.dc-btn_primary(href="../file-pdf/portfolio2023angel.pdf" target="_blank" download) Download Resume
+                i.ml-3.icon-file-pdf
+
+    section.education#education
+      .container
+        .about__title(data-aos="fade-down")
+          h3 My <span>Jorney</span>
+        .education__inner
+          .education__box
+            .education__box-title.title Education
+            .education__wrap.content
+              .content__education
+                .content__education-wrap
+                  .content__year 2017 - 2018
+                    i.icon-calendar
+                  h4 Master Derger - Uneversity
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+              .content__education
+                .content__education-wrap
+                  .content__year 2018 - 2019
+                    i.icon-calendar
+                  h4 Master Derger - Uneversity
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+              .content__education
+                .content__education-wrap
+                  .content__year 2019 - 2020
+                    i.icon-calendar
+                  h4 Master Derger - Uneversity
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+          .education__box
+            .education__box-title.title Experience
+            .education__wrap.content
+              .content__education
+                .content__education-wrap
+                  .content__year 2020 - 2021
+                    i.icon-calendar
+                  h4 Web Developer - Company
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+              .content__education
+                .content__education-wrap
+                  .content__year 2021 - 2022
+                    i.icon-calendar
+                  h4 Web Developer - Company
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+              .content__education
+                .content__education-wrap
+                  .content__year 2022 - 2023
+                    i.icon-calendar
+                  h4 Web Developer - Company
+                  p.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident voluptas dolores alias tempora exercitationem laboriosam labore? Sequi molestias officia iure accusantium.
+
+    section.skills#skills
+      .container
+        .skills__inner
+          .about__title(data-aos="fade-down")
+            h3 My <span>Skills</span>
+          .skills__content
+            .skills__column
+              .skills__column-title.title Coding Skills
+              .skills__column-wrap
+                .skills__box
+                  h5 HTML <span>90%</span>
+                  .skills__box-bar
+                    span.range.range_1(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                    h5 CSS <span>80%</span>
+                    .skills__box-bar
+                      span.range.range_2(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                  h5 JavaScript <span>60%</span>
+                  .skills__box-bar
+                    span.range.range_3(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                    h5 PHP <span>50%</span>
+                    .skills__box-bar
+                      span.range.range_4(data-aos="new-animation" data-aos-duration="2000")
+            .skills__column
+              .skills__column-title.title Professional Skills
+              .skills__column-wrap
+                .skills__box
+                  h5 Web Design <span>90%</span>
+                  .skills__box-bar
+                    span.range.range_5(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                  h5 Web Development <span>60%</span>
+                  .skills__box-bar
+                    span.range.range_6(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                  h5 Graphic Design <span>74%</span>
+                  .skills__box-bar
+                    span.range.range_7(data-aos="new-animation" data-aos-duration="2000")
+                .skills__box
+                  h5 SEO Marketing <span>50%</span>
+                  .skills__box-bar
+                    span.range.range_8(data-aos="new-animation" data-aos-duration="2000")
+
+    section.project#project
+      .container
+        .project__inner
+          .about__title(data-aos="fade-down")
+            h3 My <span>projects</span>
+          .project__wrap
+            a.project__item(href="https://farm-vast-777.netlify.app/home.html" target="_blank")
+              .project__img-ibg
+                img(src="../img/project/project-1.png", alt="project-farmVest")
+              .project__layer
+                h5 Lending Page (html,scss,js,gulp)
+                p.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                span &#10140;
+            a.project__item(href="https://profound-banoffee-87aceb.netlify.app/" target="_blank")
+              .project__img-ibg
+                img(src="img/project/project-2.png", alt="devices-photo-png")
+              .project__layer
+                h5 Lending Page
+                p.
+                  Lorem ipsum dolor sit, amet consectetur.
+                span &#10140;
+            a.project__item(href="https://homepro-kmetiuk.netlify.app/" target="_blank")
+              .project__img-ibg
+                img(src="../img/project/Screenshot_3.jpg.png", alt="devices-photo-png")
+              .project__layer
+                h5 Lending Page
+                p.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing.
+                span &#10140;
+            a.project__item(href="#")
+              .project__img-ibg
+                img(src="../img/project/Screenshot_4.png", alt="devices-photo-png")
+              .project__layer
+                h5 Lending Page
+                p.
+                  Lorem ipsum dolor sit.
+                span &#10140;
+            a.project__item(href="#")
+              .project__img-ibg
+                img(src="../img/project/Screenshot_5.png", alt="devices-photo-png")
+              .project__layer
+                h5 Lending Page
+                p.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                span &#10140;
+            a.project__item(href="#")
+              .project__img-ibg
+                img(src="../img/project/Screenshot_6.png", alt="devices-photo-png")
+              .project__layer
+                h5 Lending Page
+                p.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                span &#10140;
+
+    section.contact#contact
+      .container
+        .contact__inner
+          .about__title(data-aos="fade-down")
+            h3 Contact <span>Me!</span>
+          .contact__form.form
+            form(action="#")
+              .form__box
+                .form__field
+                  input(type="text" placeholder="Name:" required)
+                  span.focus
+                .form__field
+                  input(type="email" placeholder="Email:" required)
+                  span.focus
+              .form__box
+                .form__field
+                  input(type="number" placeholder="Mobile number:" required)
+                  span.focus
+                .form__field
+                  input(type="email" placeholder="Email subject:" required)
+                  span.focus
+              .form__textarea
+                textarea(name="text", cols="30", rows="10" placeholder="Your message" required)
+                span.focus
+              .form__button
+                button.form__btn.dc-btn.dc-btn_primary(type="submit") Submit
+
+  include includes/footer.pug
+
+  //- include includes/button-menu.pug
+
+
+
+

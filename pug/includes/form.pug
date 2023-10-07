@@ -1,0 +1,9 @@
+form(action="sendmail.php" method="post")
+  input(type="hidden" name="formname" class="js-val" value="")
+  .dc-input
+    input(type='text', placeholder='Введите Ваше имя', name='name')
+  .dc-input
+    input(type="tel" placeholder="+7 (___) ___-__-__" name="phone" data-req="1")
+  .dc-input
+    input(type="email" placeholder="E-mail" name="email")
+  button.dc-btn.-primary(type="submit" class="send") Отправить

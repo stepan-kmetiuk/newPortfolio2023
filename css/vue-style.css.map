@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./app/js/mainapp/components/Content.vue?84ce"],"names":[],"mappings":"AAAA;AACA;AACA,C","file":"../css/vue-style.css","sourcesContent":[".main-content {\n  background-color: red;\n}"],"sourceRoot":""}

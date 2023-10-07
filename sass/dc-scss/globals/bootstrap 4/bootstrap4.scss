@@ -1,0 +1,11 @@
+@import "./scss/bootstrap.scss";
+//@import "./scss/bootstrap-grid.scss";
+
+// BOOTSTRAP
+$lg-bp-x2: 1670px;
+$lg-bp: map-get($grid-breakpoints, xl);
+$md-bp: map-get($grid-breakpoints, lg);
+$sm-bp: map-get($grid-breakpoints, md);
+$bp-xsmall: map-get($grid-breakpoints, sm);
+$bp-blarge:      "only screen and (max-width : $lg-bp-x2 - 1)";
+ // BOOTSTRAP END

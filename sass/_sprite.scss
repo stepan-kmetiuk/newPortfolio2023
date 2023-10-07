@@ -1,0 +1,182 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$forest-lg-name: 'forest-lg';
+$forest-lg-x: 0px;
+$forest-lg-y: 0px;
+$forest-lg-offset-x: 0px;
+$forest-lg-offset-y: 0px;
+$forest-lg-width: 870px;
+$forest-lg-height: 540px;
+$forest-lg-total-width: 1745px;
+$forest-lg-total-height: 793px;
+$forest-lg-image: '../img/sprite.png';
+$forest-lg: (0px, 0px, 0px, 0px, 870px, 540px, 1745px, 793px, '../img/sprite.png', 'forest-lg', );
+$forest-name: 'forest';
+$forest-x: 875px;
+$forest-y: 0px;
+$forest-offset-x: -875px;
+$forest-offset-y: 0px;
+$forest-width: 870px;
+$forest-height: 540px;
+$forest-total-width: 1745px;
+$forest-total-height: 793px;
+$forest-image: '../img/sprite.png';
+$forest: (875px, 0px, -875px, 0px, 870px, 540px, 1745px, 793px, '../img/sprite.png', 'forest', );
+$vid-name: 'vid';
+$vid-x: 0px;
+$vid-y: 545px;
+$vid-offset-x: 0px;
+$vid-offset-y: -545px;
+$vid-width: 374px;
+$vid-height: 248px;
+$vid-total-width: 1745px;
+$vid-total-height: 793px;
+$vid-image: '../img/sprite.png';
+$vid: (0px, 545px, 0px, -545px, 374px, 248px, 1745px, 793px, '../img/sprite.png', 'vid', );
+$spritesheet-width: 1745px;
+$spritesheet-height: 793px;
+$spritesheet-image: '../img/sprite.png';
+$spritesheet-sprites: ($forest-lg, $forest, $vid, );
+$spritesheet: (1745px, 793px, '../img/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+$sprite-offset-x: nth($sprite, 3);
+$sprite-offset-y: nth($sprite, 4);
+background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+$sprite-image: nth($sprite, 9);
+background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+@include sprite-image($sprite);
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+
+
+
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+@each $sprite in $sprites {
+$sprite-name: nth($sprite, 10);
+
+$slice: #{$sprite-name};
+@if str-index($slice, '-hmd') {
+$sliceq: str-slice( #{$sprite-name}, 0, -5);
+$slice: str-insert($sliceq, ':hover', -1);
+} @else if str-index($slice, '-hxs') {
+$sliceq: str-slice( #{$sprite-name}, 0, -5);
+$slice: str-insert($sliceq, ':hover', -1);
+} @else if str-index($slice, '-hover') {
+$sliceq: str-slice( #{$sprite-name}, 0, -7);
+$slice: str-insert($sliceq, ':hover', -1);
+} @else if str-index($slice, '-lg') {
+$slice: str-slice( #{$sprite-name}, 0, -4);
+} @else if str-index($slice, '-md') {
+$slice: str-slice( #{$sprite-name}, 0, -4);
+} @else if str-index($slice, '-sm') {
+$slice: str-slice( #{$sprite-name}, 0, -4);
+} @else if str-index($slice, '-xs') {
+$slice: str-slice( #{$sprite-name}, 0, -4);
+}
+
+
+
+.#{$slice} {
+@if ( str-index( #{$sprite-name}, '-hmd') ) {
+@include breakpoint("maxmedium") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else if ( str-index( #{$sprite-name}, '-hxs') ) {
+@include breakpoint("mobileonly") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else if ( str-index( #{$sprite-name}, '-hover') ) {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+} @else if ( str-index( #{$sprite-name}, '-lg') ) {
+@include breakpoint("maxlarge") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else if ( str-index( #{$sprite-name}, '-md') ) {
+@include breakpoint("maxmedium") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else if ( str-index( #{$sprite-name}, '-sm') ) {
+@include breakpoint("maxsmall") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else if ( str-index( #{$sprite-name}, '-xs') ) {
+@include breakpoint("mobileonly") {
+@include sprite-position($sprite);
+@include sprite-width($sprite);
+@include sprite-height($sprite);
+}
+} @else {
+@include sprite($sprite);
+}
+}
+}
+}
+
+@include sprites($spritesheet-sprites);

@@ -1,0 +1,251 @@
+// titles h2,h3,h4,h5
+
+// --------------------------
+
+h2 {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: glh(38, 44);
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: glh(28, 32);
+  text-align: center;
+
+  span {
+    color: var(--main-color);
+    display: inline-block
+  }
+
+  @include fz(38px, 32px, 28px, 26, null, 'font-size');
+  @include fz(80px, 70px, 60px, 50px, 40px, 'margin-bottom');
+
+}
+
+h4 {
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 22px;
+  line-height: glh(24, 28);
+  font-weight: 700;
+
+  span {
+    color: var(--main-color);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 18px;
+  }
+}
+
+//---------------------------
+
+.title {
+  font-size: 34px;
+  line-height: glh(34, 40);
+  font-weight: 600;
+  margin: 0 0 24px 30px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 28px;
+  }
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  // .form__box
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  // .form__field
+
+  &__field {
+    width: 49%;
+    margin: 10px 0;
+    display: flex;
+    position: relative;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      margin: 5px 0;
+      display: flex;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      font-size: 18px;
+      line-height: glh(18, 24);
+      background: transparent;
+      border-radius: 6px;
+      border: 1px solid var(--main-color);
+      z-index: 1;
+      overflow: hidden;
+      outline: none;
+      color: #fff;
+
+      @include media-breakpoint-down(sm) {
+        padding: 6px;
+        font-size: 16px;
+      }
+
+
+      &::placeholder {
+        color: #9e9c9c;
+      }
+
+      &:focus::placeholder {
+        font-size: 0;
+      }
+
+      &:focus~.focus {
+        width: 100%;
+      }
+
+      &:valid~.focus {
+        width: 100%;
+      }
+
+    }
+  }
+
+  // .form__focus
+
+
+  // .form__textarea
+
+  &__textarea {
+    position: relative;
+    margin-top: 10px;
+
+    textarea {
+      width: 100%;
+      height: 98%;
+      padding: 16px;
+      font-size: 18px;
+      line-height: glh(18, 24);
+      background: transparent;
+      border-radius: 6px;
+      border: 1px solid var(--main-color);
+      resize: none;
+      z-index: 1;
+      overflow: hidden;
+      outline: none;
+      color: #fff;
+      resize: vertical;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 16px;
+        padding: 6px;
+      }
+
+
+      &::placeholder {
+        color: #9e9c9c;
+      }
+
+      &:focus::placeholder {
+        font-size: 0;
+      }
+
+      &:focus~.focus {
+        width: 100%;
+      }
+
+      &:valid~.focus {
+        width: 100%;
+      }
+    }
+  }
+
+  .focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 98%;
+    background-color: var(--second-bg-color);
+    border-radius: 6px;
+    z-index: -1;
+    transition: 0.4s ease 0s;
+  }
+
+  // .form__button
+
+  &__button {
+    margin-top: 35px;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 24px;
+    }
+  }
+
+  // .form__btn
+
+  &__btn {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 15px 80px;
+
+    @include media-breakpoint-down(sm) {
+      padding: 5px 80px;
+      font-size: 18px;
+    }
+  }
+
+  // modal form =====================
+
+  &_modal {
+    max-width: 350px;
+
+    .form__box {
+      display: block;
+    }
+
+    .form__field {
+      width: 100%;
+      margin: 8px 0;
+
+      input {
+        font-size: 16px;
+        line-height: glh(16, 22);
+        padding: 5px 10px;
+      }
+    }
+
+    .form__textarea {
+      textarea {
+        height: 140px;
+        font-size: 16px;
+        line-height: glh(16, 22);
+        padding: 5px 10px;
+      }
+    }
+
+    .form__button {
+      margin-top: 18px;
+
+      button {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 8px 15px;
+      }
+    }
+  }
+}

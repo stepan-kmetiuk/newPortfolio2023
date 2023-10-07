@@ -1,0 +1,160 @@
+@import "_hamburgers.scss";
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 14px 0;
+  z-index: 99;
+  transition: .3s;
+
+  &.sticky {
+    background-color: var(--bg-color);
+    box-shadow: 0 0 5px rgb(0, 171, 240);
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 13px 0;
+  }
+
+  // .header__inner
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  // .header__logo
+
+  &__logo {
+    font-size: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+
+    @include media-breakpoint-down(lg) {
+      font-size: 24px;
+    }
+
+    &:hover {
+      color: var(--main-color);
+
+      span {
+        color: var(--text-color);
+      }
+    }
+
+    span {
+      color: var(--main-color);
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  // .header__menu
+
+  // &__menu {}
+}
+
+.menu {
+  flex: 0 1 auto;
+
+  // .menu__body
+
+  &__body {
+    position: relative;
+
+    @include media-breakpoint-down(md) {
+      display: flex;
+      position: fixed;
+      left: -100%;
+      top: 55px;
+      // top: 100%;
+      background-color: rgba(13, 13, 17, 0.9);
+      height: 100%;
+      width: 100%;
+      transition: left 0.3s ease 0s;
+      overflow: auto;
+      padding: 15px 15px 100px 15px;
+
+      &.is-active {
+        left: 0;
+      }
+    }
+  }
+
+  // .menu__list
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      margin: auto;
+      text-align: center;
+      padding-left: 0;
+      overflow: auto;
+    }
+
+    li {
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+
+      a {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 18px;
+        line-height: glh(18, 22);
+        font-weight: 500;
+        transition: 0.2s;
+        position: relative;
+
+        &:focus {
+          color: var(--main-color);
+        }
+
+        @include media-breakpoint-down(md) {
+          padding: 12px 15px;
+        }
+
+        @include media-breakpoint-down(sm) {
+          font-weight: 700;
+          font-size: 30px;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: calc(100% - 40px);
+          height: 2px;
+          top: calc(100% - 13px);
+          left: 20px;
+          background: var(--main-color);
+          transform: scale(0);
+          transition: .3s;
+          border-radius: .5rem;
+
+          @include media-breakpoint-down(sm) {
+            display: none;
+          }
+        }
+
+        &:hover::before {
+          transform: scale(1);
+        }
+
+        &:hover {
+          color: var(--main-color);
+        }
+
+      }
+    }
+  }
+}

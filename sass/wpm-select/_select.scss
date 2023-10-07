@@ -1,0 +1,232 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder           { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-ms-input-placeholder      { @content; }
+}
+
+.wpm-select-wrap,
+.wpm-select-wrap *,
+.wpm-select-wrap:before,
+.wpm-select-wrap.after {
+  box-sizing: border-box;
+}
+
+.flag-icon.flag-icon-squared {
+  width: 20px !important;
+  line-height: 20px !important;
+  margin-right: 8px !important;
+  border-radius: 50%;
+}
+
+
+.wpm-select-wrap {
+  position: relative;
+  // z-index: 100;
+  z-index: 20;
+  &_open-dropdown,
+  &_open {
+    .wpm-select-placeholder {
+      border-color: $primary_color;
+    }
+    .wpm-select-placeholder__clear {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+    .wpm-select-placeholder__arrow {
+      svg {
+        path {
+          fill: $gold;
+        }
+      }
+    }
+  }
+  &_open-dropdown {
+    z-index: 101;
+    .wpm-select-dropdown-container {
+      visibility: visible;
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+  &_open {
+    z-index: 101;
+    .wpm-select-placeholder__search {
+      opacity: 1;
+    }
+    .wpm-select-placeholder__single,
+    .wpm-select-placeholder__rendered {
+      opacity: 0;
+      z-index: -1;
+    }
+    .wpm-select-dropdown-container {
+      visibility: visible;
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+}
+.wpm-select-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  // box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 0px;
+}
+.wpm-select-dropdown {
+  max-height: 150px !important;
+  overflow-y: auto;
+  padding: 8px;
+  &__empty {
+    text-align: center;
+    font-size: 15px;
+    padding: 8px 20px;
+  }
+  &__option {
+    border-radius: 0px;
+    margin: 0px 0px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 22px;
+    color: $primary_color;
+    cursor: default;
+    background: #fff;
+    padding: 8px 12px;
+    &_highlighted {
+      background: rgba($gold, .2) !important;
+    }
+  }
+}
+
+
+.wpm-select-placeholder {
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  // box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 0px;
+
+
+  font-size: 15px;
+  font-family: $font1;
+  font-weight: 300;
+  color: $primary_color;
+
+  @include breakpoint('maxlarge') {
+    height: responsive(lg, 50px);
+  }
+  &__search {
+    opacity: 0;
+    border: 0 !important;
+
+    background: rgb(255, 255, 255);
+    height: 100%;
+    position: relative;
+    font-size: 16px;
+    padding: 9px 12px;
+    font-weight: 300;
+    color: $primary_color;
+    border: 1px solid $gold;
+    border-radius: 0px;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    width: 100%;
+    @include placeholder {
+      color: $primary_color;
+    }
+    &:focus {
+      outline: none !important;
+    }
+  }
+  &__rendered,
+  &__single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    line-height: 50px;
+    @include breakpoint('maxlarge') {
+      line-height: responsive(lg, 50px);
+    }
+  }
+  &__rendered {
+    color: $primary_color !important;
+  }
+  &__single {
+    font-style: normal;
+    color: #828282;
+    padding-right: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    &_active {
+      & + .wpm-select-placeholder__rendered {
+        opacity: 0;
+        z-index: -1;
+      }
+      & ~ .wpm-select-placeholder__buttons {
+        .wpm-select-placeholder__clear {
+          opacity: 1 !important;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &__buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+  &__clear {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__arrow,
+  &__clear {
+    cursor: pointer;
+    transition: opacity .2s ease;
+    width: 36px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      svg {
+        path {
+          fill: $gold;
+        }
+      }
+    }
+    svg {
+      path {
+        fill: #667085;
+        transition: fill .15s ease;
+      }
+    }
+  }
+}
+

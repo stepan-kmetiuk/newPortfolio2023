@@ -1,0 +1,22 @@
+.dc-modal {
+	width: 400px !important;
+	max-width: 100% !important;
+	padding: 20px 15px !important;
+	background-color: #f8f8f8 !important;
+	display: none;
+
+	h2 {
+		text-align: center;
+		font-size: 18px;
+		line-height: 1.2;
+		color: #333;
+	}
+
+	h3 {
+		font-size: 16px;
+	}
+
+	p {
+		font-size: 15px;
+	}
+}
